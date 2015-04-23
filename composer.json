@@ -1,0 +1,21 @@
+{
+    "name": "remoblaser/easy-package",
+    "description": "",
+    "authors": [
+        {
+            "name": "Remo Blaser",
+            "email": "remo.blaser@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*",
+        "phpspec/phpspec": "~2.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "Remoblaser\\EasyPackage": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Remoblaser\EasyPackage
+        psr4_prefix: Remoblaser\EasyPackage
+        src_path: src
