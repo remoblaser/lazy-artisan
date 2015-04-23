@@ -1,6 +1,7 @@
 <?php namespace Remoblaser\LazyArtisan\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Remoblaser\LazyArtisan\Composer\ComposerFile;
@@ -22,6 +23,15 @@ class GenerateProvidersCommand extends Command {
      * @var string
      */
     protected $description = "Automatically add ServiceProviders of your packages";
+
+    protected $files;
+
+    public function __construct(Filesystem $files)
+    {
+        parent::__construct();
+
+        $this->files = $files;
+    }
 
 
     public function fire()
@@ -96,12 +106,10 @@ class GenerateProvidersCommand extends Command {
 
     public function writeAppConfigFile($serviceProviders)
     {
-        $appConfig = Config::get('app');
-        $appConfig['providers'] = $serviceProviders;
+        $oldProviders = Config::get('app.providers');
+        $configPath = base_path() . '/config/app.php';
+        $this->files->put($configPath, str_replace($oldProviders, $serviceProviders, $this->files->get($configPath)));
 
-        $data = var_export($appConfig, 1);
-
-        File::put(base_path() . '/config/app.php', "<?php\n return $data ;");
     }
 
 
