@@ -1,24 +1,20 @@
-<?php namespace Remoblaser\EasyPackage\Commands;
+<?php namespace Remoblaser\LazyArtisan\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Composer;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Remoblaser\EasyPackage\Composer\ComposerFile;
-use Remoblaser\EasyPackage\Composer\ComposerPackage;
-use Remoblaser\EasyPackage\Composer\LaravelPackage;
-use Remoblaser\EasyPackage\ServiceProviderReflector;
+use Remoblaser\LazyArtisan\Composer\ComposerFile;
+use Remoblaser\LazyArtisan\Composer\LaravelPackage;
+use Remoblaser\LazyArtisan\ServiceProviderReflector;
 
-class ManagePackagesCommand extends Command {
+class GenerateProvidersCommand extends Command {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = "manage:packages";
-
-    protected $appServiceProviders;
+    protected $name = "generate:providers";
 
     /**
      * The console command description.

@@ -1,6 +1,7 @@
 {
-    "name": "remoblaser/easy-package",
-    "description": "",
+    "name": "remoblaser/lazy-artisan",
+    "description": "LazyArtisan automatically adds and manages your ServiceProviders and Facades in your app config.",
+    "keywords": ["composer", "package", "service provider", "laravel", "facade", "auto"],
     "authors": [
         {
             "name": "Remo Blaser",
@@ -13,8 +14,8 @@
         "phpspec/phpspec": "~2.2"
     },
     "autoload": {
-        "psr-0": {
-            "Remoblaser\\EasyPackage": "src/"
+        "psr-4": {
+            "Remoblaser\\LazyArtisan": "src/"
         }
     },
     "minimum-stability": "stable"

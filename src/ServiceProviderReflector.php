@@ -1,4 +1,4 @@
-<?php namespace Remoblaser\EasyPackage;
+<?php namespace Remoblaser\LazyArtisan;
 
 class ServiceProviderReflector {
     const NAMESPACE_REGEX = '/namespace\s+(.*)?\;/';

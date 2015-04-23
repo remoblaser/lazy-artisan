@@ -1,5 +1,5 @@
 <?php
-namespace Remoblaser\EasyPackage\Composer;
+namespace Remoblaser\LazyArtisan\Composer;
 
 use Illuminate\Filesystem\Filesystem;
 
