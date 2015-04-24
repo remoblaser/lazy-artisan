@@ -33,7 +33,6 @@ class GenerateProvidersCommand extends Command {
         $this->files = $files;
     }
 
-
     public function fire()
     {
         $this->info('Adding missing ServiceProviders...');
@@ -69,7 +68,7 @@ class GenerateProvidersCommand extends Command {
 
         $purged = $this->removeUnnecessaryLaravelProviders($difference);
 
-        return array_merge($loadedProviders, $purged);
+        return $purged;
     }
 
     private function getServiceProvidersFrom($packageName)
@@ -106,12 +105,31 @@ class GenerateProvidersCommand extends Command {
 
     public function writeAppConfigFile($serviceProviders)
     {
-        $oldProviders = Config::get('app.providers');
+        $appConfig = "";
+
         $configPath = base_path() . '/config/app.php';
-        $this->files->put($configPath, str_replace($oldProviders, $serviceProviders, $this->files->get($configPath)));
+        foreach(file($configPath) as $line) {
+
+            if(trim(preg_replace('/\t+/', '', $line)) == "'providers' => [") {
+                $line .= $this->getWriteableServiceProviders($serviceProviders);
+            }
+
+            $appConfig .= $line;
+        }
+
+        $this->files->put($configPath, $appConfig);
 
     }
 
+    private function getWriteableServiceProviders($providers)
+    {
+        $content = "";
+        foreach($providers as $provider)
+        {
+            $content .= "\t\t" . "'" . $provider . "'," . PHP_EOL;
+        }
+        return $content;
+    }
 
 
 
