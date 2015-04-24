@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Remoblaser\EasyPackage
-        psr4_prefix: Remoblaser\EasyPackage
+        namespace: Remoblaser\LazyArtisan
+        psr4_prefix: Remoblaser\LazyArtisan
         src_path: src
