@@ -1,8 +1,9 @@
 <?php namespace Remoblaser\LazyArtisan;
 
-class ServiceProviderReflector {
+class PhpFileReflector {
     const NAMESPACE_REGEX = '/namespace\s+(.*)?\;/';
     const CLASSNAME_REGEX = '/class\s+(\w+)(.*)?\{/';
+    const EXTENDS_REGEX = '/extends\s+(\w+)(.*)?\{/';
 
     protected $fileContents;
 
@@ -28,6 +29,13 @@ class ServiceProviderReflector {
     public function getFullClassName()
     {
         return $this->getNameSpace() . '\\'  . $this->getClassName();
+    }
+
+    public function getExtendedClass()
+    {
+        if (preg_match(self::EXTENDS_REGEX, $this->fileContents, $matches)) {
+            return $matches[1];
+        }
     }
 
 

@@ -1,6 +1,7 @@
 <?php namespace Remoblaser\LazyArtisan\Composer;
 
 use Illuminate\Filesystem\Filesystem;
+use Remoblaser\LazyArtisan\PhpFileReflector;
 
 class LaravelPackage extends ComposerPackage {
 
@@ -17,6 +18,21 @@ class LaravelPackage extends ComposerPackage {
         $instance = new self($packageParts[0], $packageParts[1]);
 
         return $instance;
+    }
+
+    public function getFacades()
+    {
+        $packageFiles = $this->files->allFiles($this->packagePath);
+
+        $facades = array();
+
+        foreach($packageFiles as $file)
+        {
+            if($this->isFacade($file))
+                $facades[] = $file;
+        }
+
+        return $facades;
     }
 
     public function getServiceProviders()
@@ -39,8 +55,11 @@ class LaravelPackage extends ComposerPackage {
         return ends_with($file, 'ServiceProvider.php');
     }
 
-    public function getFacade()
+    private function isFacade($file)
     {
+        $reflector = new PhpFileReflector($file->getContents());
+
+        return ($reflector->getExtendedClass() == "Facade");
 
     }
 } 

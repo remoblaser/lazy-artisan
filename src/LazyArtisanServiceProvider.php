@@ -19,6 +19,7 @@ class LazyArtisanServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->registerGenerateProvidersCommand();
+		$this->registerGenerateFacadesCommand();
 	}
 
 	private function registerGenerateProvidersCommand()
@@ -28,6 +29,15 @@ class LazyArtisanServiceProvider extends ServiceProvider {
 		});
 
 		$this->commands('command.remoblaser.generateproviders');
+	}
+
+	private function registerGenerateFacadesCommand()
+	{
+		$this->app->singleton('command.remoblaser.generatefacades', function($app) {
+			return $app['Remoblaser\LazyArtisan\Commands\GenerateFacadesCommand'];
+		});
+
+		$this->commands('command.remoblaser.generatefacades');
 	}
 
 }

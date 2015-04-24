@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Remoblaser\LazyArtisan\Composer\ComposerFile;
 use Remoblaser\LazyArtisan\Composer\LaravelPackage;
-use Remoblaser\LazyArtisan\ServiceProviderReflector;
+use Remoblaser\LazyArtisan\PhpFileReflector;
 
 class GenerateProvidersCommand extends Command {
 
@@ -35,7 +35,7 @@ class GenerateProvidersCommand extends Command {
 
     public function fire()
     {
-        $this->info('Adding missing ServiceProviders...');
+        $this->info('Adding missing ServiceProviders to config...');
 
         $packageServiceProviders = $this->getServiceProvidersFromPackages();
         $providersForConfig = $this->mergeProvidersWithConfig($packageServiceProviders);
@@ -85,7 +85,7 @@ class GenerateProvidersCommand extends Command {
 
     private function getFullClassFromProvider($serviceProvider)
     {
-        $reflector = new ServiceProviderReflector($serviceProvider->getContents());
+        $reflector = new PhpFileReflector($serviceProvider->getContents());
 
         return $reflector->getFullClassName();
     }
