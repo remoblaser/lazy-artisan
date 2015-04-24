@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/remoblaser/lazy-artisan.svg?branch=master)](https://travis-ci.org/remoblaser/lazy-artisan) 
+[![Build Status](https://travis-ci.org/remoblaser/lazy-artisan.svg?branch=master)](https://travis-ci.org/remoblaser/lazy-artisan)
 
 #LazyArtisan
 Lazy Artisan automatically adds and manages your Service Providers and Facades in your app config. If you import a composer package, you do not need to touch your app config, everything is done automatically! <br />
