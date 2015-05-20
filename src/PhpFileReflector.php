@@ -2,7 +2,7 @@
 
 class PhpFileReflector {
     const NAMESPACE_REGEX = '/namespace\s+(.*)?\;/';
-    const CLASSNAME_REGEX = '/class\s+(\w+)(.*)?\{/';
+    const CLASSNAME_REGEX = '/[\s]+class\s+(\w+)(.*)extends/';
     const EXTENDS_REGEX = '/extends\s+(\w+)(.*)?\{/';
 
     protected $fileContents;

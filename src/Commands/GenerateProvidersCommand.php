@@ -110,7 +110,7 @@ class GenerateProvidersCommand extends Command {
         $configPath = base_path() . '/config/app.php';
         foreach(file($configPath) as $line) {
 
-            if(trim(preg_replace('/\t+/', '', $line)) == "'providers' => [") {
+            if(trim(preg_replace('/[\t\s]+/', '', $line)) == "'providers'=>[") {
                 $line .= $this->getWriteableServiceProviders($serviceProviders);
             }
 

@@ -95,7 +95,7 @@ class GenerateFacadesCommand extends Command {
         $configPath = base_path() . '/config/app.php';
         foreach(file($configPath) as $line) {
 
-            if(trim(preg_replace('/\t+/', '', $line)) == "'aliases' => [") {
+            if(trim(preg_replace('/[\t\s]+/', '', $line)) == "'aliases'=>[") {
                 $line .= $this->getWriteableFacades($facades);
             }
 
