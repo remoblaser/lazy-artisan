@@ -1,5 +1,5 @@
 {
-    "name": "Sharoff/lazy-artisan",
+    "name": "sharoff/lazy-artisan",
     "description": "LazyArtisan automatically adds and manages your ServiceProviders and Facades in your app config.",
     "keywords": ["composer", "package", "service provider", "laravel", "facade", "auto", "artisan"],
     "license": "MIT",
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sharoff\\LazyArtisan\\": "src/"
+            "sharoff\\LazyArtisan\\": "src/"
         }
     }
 }
