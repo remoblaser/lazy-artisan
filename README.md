@@ -52,6 +52,7 @@ In order to let composer execute the commands automatically, we need to update o
 ```
 
 
-##Info
+
+###Info
 If you like my work, i would appreciate it if you would spread it! Thank you!
 You can contact me through [Twitter](https://twitter.com/remoblaser)
