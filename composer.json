@@ -1,5 +1,5 @@
 {
-    "name": "sharoff/lazy-artisan",
+    "name": "remoblaser/lazy-artisan",
     "description": "LazyArtisan automatically adds and manages your ServiceProviders and Facades in your app config.",
     "keywords": ["composer", "package", "service provider", "laravel", "facade", "auto", "artisan"],
     "license": "MIT",
