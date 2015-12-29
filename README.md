@@ -26,7 +26,7 @@ Add the Service Provider to your config/app.php (luckily this is the last time y
 ```php
 'providers' => array(
 		...
-        'Remoblaser\LazyArtisan\LazyArtisanServiceProvider',
+        Remoblaser\LazyArtisan\LazyArtisanServiceProvider::class,
 	),
 ```
 
