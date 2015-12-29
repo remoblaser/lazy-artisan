@@ -93,7 +93,6 @@ class GenerateProvidersCommand extends Command {
     private function removeUnnecessaryLaravelProviders($providers)
     {
         $purged = array();
-        //TODO: find a better way to handle this
         foreach($providers as $provider)
         {
             if(!starts_with($provider, 'Illuminate'))
@@ -113,10 +112,8 @@ class GenerateProvidersCommand extends Command {
             if(trim(preg_replace('/[\t\s]+/', '', $line)) == "'providers'=>[") {
                 $line .= $this->getWriteableServiceProviders($serviceProviders);
             }
-
             $appConfig .= $line;
         }
-
         $this->files->put($configPath, $appConfig);
 
     }
