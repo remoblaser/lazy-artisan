@@ -35,7 +35,8 @@ class ComposerFile {
         $packages = array();
         foreach($this->jsonContent->require as $package => $version)
         {
-            $packages[] = $package;
+            if($this->isPackage($package))
+                $packages[] = $package;
         }
 
         return $packages;
@@ -46,5 +47,9 @@ class ComposerFile {
         return $this->jsonContent->require-dev;
     }
 
+    private function isPackage($package)
+    {
+        return count(explode('/', $package)) == 2;
+    }
 
 } 

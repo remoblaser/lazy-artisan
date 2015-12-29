@@ -15,6 +15,7 @@ class LaravelPackage extends ComposerPackage {
 
     public static function withFullPackageName($packageName) {
         $packageParts = explode('/', $packageName);
+        
         $instance = new self($packageParts[0], $packageParts[1]);
 
         return $instance;

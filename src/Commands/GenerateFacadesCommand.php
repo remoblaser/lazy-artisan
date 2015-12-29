@@ -59,7 +59,6 @@ class GenerateFacadesCommand extends Command {
         $file = new ComposerFile();
         $packageNames = $file->getRequiredPackages();
 
-
         $facades = [];
         foreach($packageNames as $packageName)
         {
@@ -113,7 +112,7 @@ class GenerateFacadesCommand extends Command {
             $classParts = explode("\\", $facade);
             $alias = $classParts[sizeof($classParts) - 1];
 
-            $content .= "\t\t" ."'" . $alias . "'\t=> '" . $facade . "'," . PHP_EOL;
+            $content .= "\t\t'$alias'\t=> $facade::class, " . PHP_EOL;
         }
         return $content;
     }

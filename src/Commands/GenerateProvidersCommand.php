@@ -103,7 +103,7 @@ class GenerateProvidersCommand extends Command {
         return $purged;
     }
 
-    public function writeAppConfigFile($serviceProviders)
+    private function writeAppConfigFile($serviceProviders)
     {
         $appConfig = "";
 
@@ -126,7 +126,7 @@ class GenerateProvidersCommand extends Command {
         $content = "";
         foreach($providers as $provider)
         {
-            $content .= "\t\t" . "'" . $provider . "'," . PHP_EOL;
+            $content .= "\t\t$provider::class," . PHP_EOL;
         }
         return $content;
     }
